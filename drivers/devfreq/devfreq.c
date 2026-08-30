@@ -1054,7 +1054,7 @@ static ssize_t governor_show(struct device *dev,
 	return sprintf(buf, "%s\n", to_devfreq(dev)->governor->name);
 }
 
-static ssize_t governor_store(struct device *dev, struct device_attribute *attr,
+static ssize_t __maybe_unused governor_store(struct device *dev, struct device_attribute *attr,
 			      const char *buf, size_t count)
 {
 	struct devfreq *df = to_devfreq(dev);
@@ -1119,7 +1119,7 @@ out:
 		ret = count;
 	return ret;
 }
-static DEVICE_ATTR_RW(governor);
+static DEVICE_ATTR_RO(governor);
 
 static ssize_t available_governors_show(struct device *d,
 					struct device_attribute *attr,
