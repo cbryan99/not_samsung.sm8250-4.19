@@ -893,6 +893,10 @@ static ssize_t max77705_muic_set_afc_disable(struct device *dev,
 #if defined(CONFIG_MUIC_HV) || defined(CONFIG_SUPPORT_QC30)
 	union power_supply_propval psy_val;
 #endif
+
+	/* Default enable AFC */
+	pdata->afc_disable = false;
+
 	/* Disable AFC */
 	if (!strncasecmp(buf, "1", 1)) {
 		pdata->afc_disable = true;
@@ -1038,7 +1042,7 @@ static DEVICE_ATTR(otg_test, 0664,
 static DEVICE_ATTR(apo_factory, 0664,
 		max77705_muic_show_apo_factory, max77705_muic_set_apo_factory);
 #if defined(CONFIG_HV_MUIC_MAX77705_AFC)
-static DEVICE_ATTR(afc_disable, 0664,
+static DEVICE_ATTR(afc_disable, 0444,
 		max77705_muic_show_afc_disable, max77705_muic_set_afc_disable);
 #endif /* CONFIG_HV_MUIC_MAX77705_AFC */
 static DEVICE_ATTR(vbus_value, S_IRUGO, max77705_muic_show_vbus_value, NULL);
