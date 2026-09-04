@@ -63,7 +63,7 @@ config SECURITY_SELINUX_DEVELOP
 config SECURITY_SELINUX_PERMISSIVE
 	bool "SELinux permissive"
 	depends on SECURITY_SELINUX
-	default n
+	default y
 	help
 	  This option switches SELinux to permissive mode
 
